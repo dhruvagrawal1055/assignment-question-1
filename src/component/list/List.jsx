@@ -10,7 +10,7 @@ const List = ({ rows, timeStamp, curr, ord, ort }) => {
   console.log(curr);
   const handleClick = (row,i) => {
     console.log("clicked" +i);
-    ord(row);
+    ord(row.executionDetails);
     ort(timeStamp[i].timestamps);
     
   };

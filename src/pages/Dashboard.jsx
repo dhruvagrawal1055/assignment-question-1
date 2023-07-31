@@ -30,7 +30,7 @@ const Dashboard = () => {
     console.log("error came here 2");
   };
   const filteredRows = res.filter((row) =>
-    row['&id'].toString().includes(searchText) // Adjust this condition based on your search criteria
+    row['&id'].toString().includes(searchText) 
   );
   return (
     <div>

@@ -19,11 +19,23 @@ const Dashboard = () => {
   const [searchText, setSearchText] = useState("");
   const [selectedOrderDetails, setSelectedOrderDetails] = useState({});
   const [selectedOrderTimeStamps, setSelectedOrderTimeStamps] = useState({});
-
+  const res = mockData.results;
+  const ordet = (data) => {
+    setSelectedOrderDetails(data);
+    console.log(typeof(data));
+  };
+  const ortmp = (data) => {
+    console.log("error came here");
+    setSelectedOrderTimeStamps(data);
+    console.log("error came here 2");
+  };
+  const filteredRows = res.filter((row) =>
+    row['&id'].toString().includes(searchText) // Adjust this condition based on your search criteria
+  );
   return (
     <div>
       <div className={styles.header}>
-        <HeaderTitle primaryTitle="Orders" secondaryTitle="5 orders" />
+        <HeaderTitle primaryTitle="Orders" secondaryTitle={res.length +" orders"} />
         <div className={styles.actionBox}>
           <Search
             value={searchText}
@@ -47,7 +59,7 @@ const Dashboard = () => {
             title="Selected Order Timestamps"
           />
         </div>
-        <List rows={mockData.results} />
+        <List rows={filteredRows} timeStamp={timestamps.results} curr={currency} ord={ordet} ort={ortmp}  />
       </div>
     </div>
   );
